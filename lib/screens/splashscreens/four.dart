@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import '../../screens/splashscreens/three.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 
-class SecondSplashScreen extends StatefulWidget {
-  const SecondSplashScreen({super.key});
+class FourthSplashScreen extends StatefulWidget {
+  const FourthSplashScreen({super.key});
 
-  static const routeName = '/second-splash';
+  static const routeName = '/fourth-splash';
 
   @override
-  State<SecondSplashScreen> createState() => _SecondSplashScreenState();
+  State<FourthSplashScreen> createState() => _FourthSplashScreenState();
 }
 
-class _SecondSplashScreenState extends State<SecondSplashScreen> {
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      context.go(ThirdSplashScreen.routeName);
-    });
-    super.initState();
-  }
+class _FourthSplashScreenState extends State<FourthSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,40 +41,71 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                   SizedBox(
                     width: deviceWidth(context) * 0.1,
                   ),
+                  
                   Container(
-                    margin: EdgeInsets.only(top: deviceHeight(context) * 0.08),
-                    child: Row(
+                    margin: EdgeInsets.only(top: deviceHeight(context) * 0.025),
+                    child: Image.asset("assets/images/voice.png"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: deviceHeight(context) * 0.05),
+                    child: Column(
                       children: [
+                        Row(
+                          children: [
+                            Stack(
+                              children: [
+                                Text(
+                                  'Speak',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 1
+                                      ..color = AppColor.redColor,
+                                  ),
+                                ),
+                                
+                                const Text(
+                                  'Speak',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColor.whiteColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Text(
+                              "Sphere",
+                              style: TextStyle(
+                                  color: AppColor.redColor,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
                         Stack(
                           children: [
                             Text(
-                              'Speak',
+                              '...speak the world',
                               style: TextStyle(
-                                fontSize: 35,
+                                fontSize: 15,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 1
+                                  ..strokeWidth = 0.5
                                   ..color = AppColor.redColor,
                               ),
                             ),
                             // Solid text as fill.
                             const Text(
-                              'Speak',
+                              '...speak the world',
                               style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
                                 color: AppColor.whiteColor,
                               ),
                             ),
                           ],
                         ),
-                        const Text(
-                          "Sphere",
-                          style: TextStyle(
-                              color: AppColor.redColor,
-                              fontSize: 35,
-                              fontWeight: FontWeight.w600),
-                        )
                       ],
                     ),
                   ),
@@ -97,12 +119,11 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                 margin: const EdgeInsets.all(0.0),
                 padding: const EdgeInsets.only(bottom: 15.0),
                 child: Image.asset(
-                  "assets/images/splash1.png",
+                  "assets/images/splash3.png",
                   fit: BoxFit.contain,
                   width: deviceWidth(context),
                 ),
               ),
-              
             ],
           ),
         ),

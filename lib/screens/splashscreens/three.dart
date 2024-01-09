@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../screens/splashscreens/three.dart';
+import 'package:speaksphere/screens/splashscreens/four.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 
-class SecondSplashScreen extends StatefulWidget {
-  const SecondSplashScreen({super.key});
+class ThirdSplashScreen extends StatefulWidget {
+  const ThirdSplashScreen({super.key});
 
-  static const routeName = '/second-splash';
+  static const routeName = '/third-splash';
 
   @override
-  State<SecondSplashScreen> createState() => _SecondSplashScreenState();
+  State<ThirdSplashScreen> createState() => _ThirdSplashScreenState();
 }
 
-class _SecondSplashScreenState extends State<SecondSplashScreen> {
+class _ThirdSplashScreenState extends State<ThirdSplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      context.go(ThirdSplashScreen.routeName);
+      context.go(FourthSplashScreen.routeName);
     });
     super.initState();
   }
@@ -49,6 +49,11 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                 children: [
                   SizedBox(
                     width: deviceWidth(context) * 0.1,
+                  ),
+                  // Image.asset("assets/images/voice.png", width: 50, height: 50,),
+                  Container(
+                    margin: EdgeInsets.only(top: deviceHeight(context) * 0.08),
+                    child: Image.asset("assets/images/voice.png"),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.08),
@@ -97,12 +102,11 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                 margin: const EdgeInsets.all(0.0),
                 padding: const EdgeInsets.only(bottom: 15.0),
                 child: Image.asset(
-                  "assets/images/splash1.png",
+                  "assets/images/splash2.png",
                   fit: BoxFit.contain,
                   width: deviceWidth(context),
                 ),
               ),
-              
             ],
           ),
         ),

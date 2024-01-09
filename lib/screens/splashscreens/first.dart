@@ -14,7 +14,7 @@ class FirstSplashScreen extends StatefulWidget {
 class _FirstSplashScreenState extends State<FirstSplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       context.go(SecondSplashScreen.routeName);
     });
     super.initState();
@@ -25,8 +25,8 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          width: deviceWidth(context) * 1,
-          height: deviceHeight(context) * 1,
+          width: deviceWidth(context) ,
+          height: deviceHeight(context),
           decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/splashbg.png'),
@@ -60,7 +60,6 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
                               color: AppColor.offWhite,
                               fontSize: 35,
                               fontWeight: FontWeight.w600,
-                              
                             ),
                           ),
                           TextSpan(
@@ -77,37 +76,15 @@ class _FirstSplashScreenState extends State<FirstSplashScreen> {
                   Image.asset("assets/images/splashicon.png"),
                 ],
               ),
-              // SizedBox(
-              //   height: deviceHeight(context) * 0.06,
-              // ),
-              Padding(
-                padding: EdgeInsets.only(bottom: deviceHeight(context) * 0.07),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: deviceWidth(context),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Image.asset(
-                            "assets/images/splashchat.png",
-                          ),
-                        ],
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/splashmale.png",
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.only(top: deviceHeight(context) * 0.16),
-                      child: Image.asset(
-                        "assets/images/splashfemale.png",
-                      ),
-                    ),
-                  ],
+              Container(
+                margin: const EdgeInsets.all(0.0),
+                padding: const EdgeInsets.only(bottom: 15.0),
+                child: Image.asset(
+                  "assets/images/splash1.png",
+                  fit: BoxFit.contain,
+                  width: deviceWidth(context),
                 ),
-              )
+              ),
             ],
           ),
         ),
