@@ -4,9 +4,11 @@ import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 
 class SelectOption extends StatefulWidget {
-  const SelectOption(this.title, this._onSelectPress, {super.key});
+  const SelectOption(this.title, this._onSelectPress, this._isDisabled,
+      {super.key});
   final String title;
   final Function(double) _onSelectPress;
+  final bool _isDisabled;
 
   @override
   State<SelectOption> createState() => _SelectOptionState();
@@ -14,7 +16,6 @@ class SelectOption extends StatefulWidget {
 
 class _SelectOptionState extends State<SelectOption> {
   bool _isTapped = false;
-  
   double buttonValue = 0.0;
 
   void handleSelectOption() {
@@ -24,12 +25,18 @@ class _SelectOptionState extends State<SelectOption> {
     widget._onSelectPress(buttonValue);
   }
 
+  void stopSelection() {
+    _isTapped = false;
+    widget._onSelectPress(buttonValue);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InkWell(
-          onTap: handleSelectOption,
+          onTap: widget._isDisabled ? stopSelection : handleSelectOption,
+          
           child: DottedBorder(
             color: AppColor.offRed,
             borderType: BorderType.RRect,

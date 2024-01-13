@@ -49,19 +49,29 @@ class _SetupScreenState extends State<SetupScreen> {
         spacing: 15.0,
         runSpacing: 15,
         children: List.generate(text.length, (index) {
-          return SelectOption(text[index], (p0) => increaseProgress());
+          return SelectOption(text[index], (p0) => increaseProgress(index),
+              _isButtonClicked.where((state) => state).length >= _isMaxClicked);
         }),
       ),
     );
   }
 
-  void increaseProgress() {
+  final List<bool> _isButtonClicked = List.generate(20, (index) => false);
+  var _progressValue = 0.0;
+  final int _isMaxClicked = 6;
+
+  void increaseProgress(int index) {
     setState(() {
-      progressValue = (progressValue + 0.1).clamp(0.0, 1.0);
+      bool isClicked = _isButtonClicked[index];
+      if (isClicked) {
+        _progressValue -= 0.1;
+      } else {
+        _progressValue += 0.1;
+      }
+      _isButtonClicked[index] = !isClicked;
+      _progressValue = _progressValue.clamp(0.0, 0.6);
     });
   }
-
-  var progressValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +89,7 @@ class _SetupScreenState extends State<SetupScreen> {
                   color: AppColor.primaryTextColor,
                   borderRadius: BorderRadius.circular(60)),
               child: LinearProgressIndicator(
-                value: progressValue,
+                value: _progressValue,
                 backgroundColor: AppColor.primaryTextColor,
                 valueColor:
                     const AlwaysStoppedAnimation<Color>(AppColor.offRed),
@@ -89,8 +99,7 @@ class _SetupScreenState extends State<SetupScreen> {
           SizedBox(
             width: deviceWidth(context) * 0.02,
           ),
-          Text(
-              '${(progressValue * 10).toStringAsFixed(1)}'),
+          Text('${(_progressValue * 10).toInt()}/6'),
           SizedBox(
             width: deviceWidth(context) * 0.01,
           ),
