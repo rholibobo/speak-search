@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/setup.dart';
 import 'package:speaksphere/screens/splashscreens/four.dart';
 import '../../screens/splashscreens/three.dart';
 import '../screens/splashscreens/second.dart';
@@ -8,10 +9,10 @@ import '../screens/splashscreens/first.dart';
 // GoRouter configuration
 final router = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const FirstSplashScreen(),
-    ),
+    // GoRoute(
+    //   path: '/',
+    //   builder: (context, state) => const FirstSplashScreen(),
+    // ),
     GoRoute(
       path: SecondSplashScreen.routeName,
       pageBuilder: (context, state) {
@@ -54,5 +55,10 @@ final router = GoRouter(
         );
       },
     ),
+    GoRoute(
+      // path: SetupScreen.routeName,
+      path: "/",
+      builder: (context, state) => const SetupScreen(),
+    )
   ],
 );
