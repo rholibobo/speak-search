@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:speaksphere/screens/splashscreens/four.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ThirdSplashScreen extends StatefulWidget {
   const ThirdSplashScreen({super.key});
@@ -16,11 +17,13 @@ class ThirdSplashScreen extends StatefulWidget {
 class _ThirdSplashScreenState extends State<ThirdSplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 2000), () {
       context.go(FourthSplashScreen.routeName);
     });
+
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,43 +56,49 @@ class _ThirdSplashScreenState extends State<ThirdSplashScreen> {
                   // Image.asset("assets/images/voice.png", width: 50, height: 50,),
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.08),
-                    child: Image.asset("assets/images/voice.png"),
+                    child: FadeIn(
+                      duration: const Duration(seconds: 1),
+                      child: Image.asset("assets/images/voice.png"),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.08),
-                    child: Row(
-                      children: [
-                        Stack(
-                          children: [
-                            Text(
-                              'Speak',
-                              style: TextStyle(
-                                fontSize: 35,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 1
-                                  ..color = AppColor.redColor,
+                    child: FadeIn(
+                      duration: const Duration(seconds: 1),
+                      child: Row(
+                        children: [
+                          Stack(
+                            children: [
+                              Text(
+                                'Speak',
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 1
+                                    ..color = AppColor.redColor,
+                                ),
                               ),
-                            ),
-                            // Solid text as fill.
-                            const Text(
-                              'Speak',
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.whiteColor,
+                              // Solid text as fill.
+                              const Text(
+                                'Speak',
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColor.whiteColor,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const Text(
-                          "Sphere",
-                          style: TextStyle(
-                              color: AppColor.redColor,
-                              fontSize: 35,
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
+                            ],
+                          ),
+                          const Text(
+                            "Sphere",
+                            style: TextStyle(
+                                color: AppColor.redColor,
+                                fontSize: 35,
+                                fontWeight: FontWeight.w600),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Image.asset("assets/images/splashicon.png"),
@@ -98,13 +107,16 @@ class _ThirdSplashScreenState extends State<ThirdSplashScreen> {
               // SizedBox(
               //   height: deviceHeight(context) * 0.06,
               // ),
-              Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.only(bottom: 15.0),
-                child: Image.asset(
-                  "assets/images/splash2.png",
-                  fit: BoxFit.contain,
-                  width: deviceWidth(context),
+              FadeIn(
+                duration: const Duration(seconds: 1),
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  padding: const EdgeInsets.only(bottom: 15.0),
+                  child: Image.asset(
+                    "assets/images/splash2.png",
+                    fit: BoxFit.contain,
+                    width: deviceWidth(context),
+                  ),
                 ),
               ),
             ],

@@ -14,7 +14,7 @@ class FirstSplashScreen extends StatefulWidget {
 class _FirstSplashScreenState extends State<FirstSplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(milliseconds: 2000), () {
       context.go(SecondSplashScreen.routeName);
     });
     super.initState();

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/setup.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
+import 'package:animate_do/animate_do.dart';
 
 class FourthSplashScreen extends StatefulWidget {
   const FourthSplashScreen({super.key});
@@ -12,6 +15,13 @@ class FourthSplashScreen extends StatefulWidget {
 }
 
 class _FourthSplashScreenState extends State<FourthSplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      context.go(SetupScreen.routeName);
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,27 +94,30 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
                             )
                           ],
                         ),
-                        Stack(
-                          children: [
-                            Text(
-                              '...speak the world',
-                              style: TextStyle(
-                                fontSize: 15,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 0.5
-                                  ..color = AppColor.redColor,
+                        FadeIn(
+                          duration: const Duration(seconds: 1),
+                          child: Stack(
+                            children: [
+                              Text(
+                                '...speak the world',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 0.5
+                                    ..color = AppColor.redColor,
+                                ),
                               ),
-                            ),
-                            // Solid text as fill.
-                            const Text(
-                              '...speak the world',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: AppColor.whiteColor,
+                              // Solid text as fill.
+                              const Text(
+                                '...speak the world',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: AppColor.whiteColor,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -115,13 +128,16 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
               // SizedBox(
               //   height: deviceHeight(context) * 0.06,
               // ),
-              Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.only(bottom: 15.0),
-                child: Image.asset(
-                  "assets/images/splash3.png",
-                  fit: BoxFit.contain,
-                  width: deviceWidth(context),
+              FadeIn(
+                duration:const Duration(seconds: 1),
+                child: Container(
+                  margin: const EdgeInsets.all(0.0),
+                  padding: const EdgeInsets.only(bottom: 15.0),
+                  child: Image.asset(
+                    "assets/images/splash3.png",
+                    fit: BoxFit.contain,
+                    width: deviceWidth(context),
+                  ),
                 ),
               ),
             ],

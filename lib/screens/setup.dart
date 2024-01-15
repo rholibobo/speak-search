@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
@@ -41,6 +43,7 @@ class _SetupScreenState extends State<SetupScreen> {
     "Shopping",
     "Sight-seeing"
   ];
+  final Set<int> bulaba = {};
 
   Widget _buildOptionRow() {
     return Padding(
@@ -49,28 +52,51 @@ class _SetupScreenState extends State<SetupScreen> {
         spacing: 15.0,
         runSpacing: 15,
         children: List.generate(text.length, (index) {
-          return SelectOption(text[index], (p0) => increaseProgress(index),
-              _isButtonClicked.where((state) => state).length >= _isMaxClicked);
+          return SelectOption(
+            text[index],
+            (p0) => increaseProgress(index),
+            bulaba,
+            
+          );
+          // _isButtonClicked.where((state) => state).length >= _isMaxClicked);
         }),
       ),
     );
   }
 
-  final List<bool> _isButtonClicked = List.generate(20, (index) => false);
+  final List<bool> _isButtonClicked = List.generate(25, (index) => false);
   var _progressValue = 0.0;
   final int _isMaxClicked = 6;
 
   void increaseProgress(int index) {
-    setState(() {
-      bool isClicked = _isButtonClicked[index];
-      if (isClicked) {
-        _progressValue -= 0.1;
-      } else {
-        _progressValue += 0.1;
-      }
-      _isButtonClicked[index] = !isClicked;
-      _progressValue = _progressValue.clamp(0.0, 0.6);
+    // print(_isButtonClicked.where((state) => state).length);
+    // setState(() {
+    //   bool isClicked = _isButtonClicked[index];
+    //   if (isClicked) {
+    //     _progressValue -= 0.1;
+    //   } else {
+    //     _progressValue += 0.1;
+    //   }
+    //   _isButtonClicked[index] = !isClicked;
+    //   _progressValue = _progressValue.clamp(0.0, 0.6);
+    // });
+    // if (bulaba.length < 6 && !bulaba.contains(index)) {
+    //   setState(() {
+    //     bulaba.add(index);
+    //     _progressValue = min(_progressValue + 0.1, 0.6); // Ensure max value of 6
+    //   });
+    // }
+    if(bulaba.contains(index)) {
+      setState(() {
+      bulaba.remove(index);
+      _progressValue = max(_progressValue - 0.1, 0); // Ensure min value of 0
+    } );
+    } else if (bulaba.length < 6) {
+      setState(() {
+      bulaba.add(index);
+      _progressValue = min(_progressValue + 0.1, 0.6); // Ensure max value of 6
     });
+    }
   }
 
   @override

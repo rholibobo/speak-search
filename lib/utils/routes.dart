@@ -18,6 +18,7 @@ final router = GoRouter(
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: const SecondSplashScreen(),
+          transitionDuration: const Duration(seconds: 1),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
@@ -32,6 +33,7 @@ final router = GoRouter(
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: const ThirdSplashScreen(),
+          transitionDuration: const Duration(seconds: 1),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
@@ -43,12 +45,14 @@ final router = GoRouter(
     ),
     GoRoute(
       path: FourthSplashScreen.routeName,
+      // builder: (context, state) => const FourthSplashScreen()
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: const FourthSplashScreen(),
+          transitionDuration: const Duration(seconds: 1),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
+              opacity: CurveTween(curve: Curves.linear).animate(animation),
               child: child,
             );
           },
@@ -58,7 +62,18 @@ final router = GoRouter(
     GoRoute(
       // path: SetupScreen.routeName,
       path: "/",
-      builder: (context, state) => const SetupScreen(),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          child: const SetupScreen(),
+          transitionDuration: const Duration(seconds: 1),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
+              child: child,
+            );
+          },
+        );
+      },
     )
   ],
 );
