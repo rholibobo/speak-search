@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/home.dart';
 import 'package:speaksphere/screens/setup.dart';
 import 'package:speaksphere/screens/splashscreens/four.dart';
 import '../../screens/splashscreens/three.dart';
@@ -60,8 +61,8 @@ final router = GoRouter(
       },
     ),
     GoRoute(
-      // path: SetupScreen.routeName,
-      path: "/",
+      path: SetupScreen.routeName,
+      
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: const SetupScreen(),
@@ -74,6 +75,11 @@ final router = GoRouter(
           },
         );
       },
-    )
+    ),
+    GoRoute(
+      // path: HomeScreen.routeName,
+      path: "/",
+      builder: (context, state) => const HomeScreen(),
+    ),
   ],
 );
