@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:speaksphere/screens/home.dart';
 import 'package:speaksphere/screens/lessons.dart';
 import 'package:speaksphere/screens/setup.dart';
+import 'package:speaksphere/screens/speaking.dart';
 import 'package:speaksphere/screens/splashscreens/four.dart';
 import 'package:speaksphere/screens/streaks.dart';
 import '../../screens/splashscreens/three.dart';
@@ -86,9 +87,14 @@ final router = GoRouter(
       builder: (context, state) => const LessonScreen(),
     ),
     GoRoute(
-      // path: StreaksScreen.routeName,
-      path: "/",
+      path: StreaksScreen.routeName,
+      // path: "/",
       builder: (context, state) => const StreaksScreen(),
+    ),
+    GoRoute(
+      // path: SpeakingScreen.routeName,
+      path: "/",
+      builder: (context, state) => const SpeakingScreen(),
     ),
   ],
 );
