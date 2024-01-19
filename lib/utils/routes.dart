@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/chats.dart';
+import 'package:speaksphere/screens/games.dart';
+import 'package:speaksphere/screens/exercises.dart';
 import 'package:speaksphere/screens/home.dart';
 import 'package:speaksphere/screens/lessons.dart';
 import 'package:speaksphere/screens/setup.dart';
@@ -17,6 +20,10 @@ final router = GoRouter(
     //   path: '/',
     //   builder: (context, state) => const FirstSplashScreen(),
     // ),
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const SetupScreen(),
+    ),
     GoRoute(
       path: SecondSplashScreen.routeName,
       pageBuilder: (context, state) {
@@ -65,6 +72,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: SetupScreen.routeName,
+      // path: "/",
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: const SetupScreen(),
@@ -92,9 +100,25 @@ final router = GoRouter(
       builder: (context, state) => const StreaksScreen(),
     ),
     GoRoute(
-      // path: SpeakingScreen.routeName,
-      path: "/",
+      path: SpeakingScreen.routeName,
+      
       builder: (context, state) => const SpeakingScreen(),
     ),
+    GoRoute(
+      path: ExercisesScreen.routeName,
+      // path: "/",
+      builder: (context, state) => const ExercisesScreen(),
+    ),
+    GoRoute(
+      path: ChatsScreen.routeName,
+      // path: "/",
+      builder: (context, state) => const ChatsScreen(),
+    ),
+    GoRoute(
+      path: GamesScreen.routeName,
+      // path: "/",
+      builder: (context, state) => const GamesScreen(),
+    ),
+    
   ],
 );

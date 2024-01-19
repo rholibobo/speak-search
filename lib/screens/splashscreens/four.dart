@@ -14,7 +14,8 @@ class FourthSplashScreen extends StatefulWidget {
   State<FourthSplashScreen> createState() => _FourthSplashScreenState();
 }
 
-class _FourthSplashScreenState extends State<FourthSplashScreen> {
+class _FourthSplashScreenState extends State<FourthSplashScreen>
+    with TickerProviderStateMixin {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 2000), () {
@@ -22,6 +23,7 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +53,6 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
                   SizedBox(
                     width: deviceWidth(context) * 0.1,
                   ),
-                  
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.025),
                     child: Image.asset("assets/images/voice.png"),
@@ -74,7 +75,6 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
                                       ..color = AppColor.redColor,
                                   ),
                                 ),
-                                
                                 const Text(
                                   'Speak',
                                   style: TextStyle(
@@ -129,7 +129,7 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
               //   height: deviceHeight(context) * 0.06,
               // ),
               FadeIn(
-                duration:const Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 child: Container(
                   margin: const EdgeInsets.all(0.0),
                   padding: const EdgeInsets.only(bottom: 15.0),

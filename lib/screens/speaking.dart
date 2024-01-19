@@ -65,7 +65,7 @@ class SpeakingScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: deviceHeight(context) * 0.15,
+              height: deviceHeight(context) * 0.2,
             ),
             const Text(
               "Brilliant!",
@@ -80,7 +80,7 @@ class SpeakingScreen extends StatelessWidget {
             ),
             const Text("Hello, Buchi, nice to meet you"),
             SizedBox(
-              height: deviceHeight(context) * 0.08,
+              height: deviceHeight(context) * 0.04,
             ),
              AppButton(() {}, "Continue"),
           ],

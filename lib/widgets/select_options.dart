@@ -70,16 +70,19 @@ class _SelectOptionState extends State<SelectOption> {
               ? _stopSelection
               : _handleSelectOption,
           child: DottedBorder(
-            color: AppColor.offRed,
+            color:_isTapped ? const Color.fromRGBO(136,58,47,1) : AppColor.offRed,
+            strokeWidth: _isTapped ? 5 : 1,
+            dashPattern: _isTapped ? const [500,1] : const [10,3],
             borderType: BorderType.RRect,
-            radius: const Radius.circular(12),
+            radius: const Radius.circular(13),
+            padding: EdgeInsets.zero,
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(12)),
               child: Container(
-                padding: EdgeInsets.all(deviceWidth(context) * 0.02),
+                padding: EdgeInsets.all(deviceWidth(context) * 0.025),
                 decoration: BoxDecoration(
                     color:
-                        _isTapped ? AppColor.selectColor : Colors.transparent),
+                        _isTapped ? AppColor.selectColor : Colors.transparent,),
                 child: Text(
                   widget.title,
                   style: TextStyle(

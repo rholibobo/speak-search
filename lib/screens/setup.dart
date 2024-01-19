@@ -56,7 +56,6 @@ class _SetupScreenState extends State<SetupScreen> {
             text[index],
             (p0) => increaseProgress(index),
             bulaba,
-            
           );
           // _isButtonClicked.where((state) => state).length >= _isMaxClicked);
         }),
@@ -64,38 +63,28 @@ class _SetupScreenState extends State<SetupScreen> {
     );
   }
 
-  final List<bool> _isButtonClicked = List.generate(25, (index) => false);
   var _progressValue = 0.0;
-  final int _isMaxClicked = 6;
+  int valueIncrease = 0;
 
   void increaseProgress(int index) {
-    // print(_isButtonClicked.where((state) => state).length);
-    // setState(() {
-    //   bool isClicked = _isButtonClicked[index];
-    //   if (isClicked) {
-    //     _progressValue -= 0.1;
-    //   } else {
-    //     _progressValue += 0.1;
-    //   }
-    //   _isButtonClicked[index] = !isClicked;
-    //   _progressValue = _progressValue.clamp(0.0, 0.6);
-    // });
-    // if (bulaba.length < 6 && !bulaba.contains(index)) {
-    //   setState(() {
-    //     bulaba.add(index);
-    //     _progressValue = min(_progressValue + 0.1, 0.6); // Ensure max value of 6
-    //   });
-    // }
-    if(bulaba.contains(index)) {
-      setState(() {
-      bulaba.remove(index);
-      _progressValue = max(_progressValue - 0.1, 0); // Ensure min value of 0
-    } );
+    if (bulaba.contains(index)) {
+      setState(
+        () {
+          bulaba.remove(index);
+          _progressValue =
+              max(_progressValue - 0.1667, 0); // Ensure min value of 0
+          valueIncrease--;
+        },
+      );
     } else if (bulaba.length < 6) {
-      setState(() {
-      bulaba.add(index);
-      _progressValue = min(_progressValue + 0.1, 0.6); // Ensure max value of 6
-    });
+      setState(
+        () {
+          bulaba.add(index);
+          _progressValue =
+              min(_progressValue + 0.1667, 1.002); // Ensure max value of 6
+          valueIncrease++;
+        },
+      );
     }
   }
 
@@ -125,7 +114,8 @@ class _SetupScreenState extends State<SetupScreen> {
           SizedBox(
             width: deviceWidth(context) * 0.02,
           ),
-          Text('${(_progressValue * 10).toInt()}/6'),
+          // Text('${(_progressValue * 10).toInt()}/6'),
+          Text('$valueIncrease/6'),
           SizedBox(
             width: deviceWidth(context) * 0.01,
           ),
