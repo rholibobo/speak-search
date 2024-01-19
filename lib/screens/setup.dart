@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/home.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:speaksphere/widgets/app_button.dart';
@@ -168,7 +170,9 @@ class _SetupScreenState extends State<SetupScreen> {
             ),
             Column(
               children: [
-                AppButton(() {}, "Continue"),
+                AppButton(() {
+                  context.push(HomeScreen.routeName);
+                }, "Continue"),
                 const TextButton(
                   onPressed: null,
                   child: Text(

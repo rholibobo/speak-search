@@ -16,46 +16,9 @@ import '../screens/splashscreens/first.dart';
 // GoRouter configuration
 final router = GoRouter(
   routes: [
-    // GoRoute(
-    //   path: '/',
-    //   builder: (context, state) => const FirstSplashScreen(),
-    // ),
     GoRoute(
-      path: '/',
-      builder: (context, state) => const SetupScreen(),
-    ),
-    GoRoute(
-      path: SecondSplashScreen.routeName,
-      pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const SecondSplashScreen(),
-          transitionDuration: const Duration(seconds: 1),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
-              child: child,
-            );
-          },
-        );
-      },
-    ),
-    GoRoute(
-      path: ThirdSplashScreen.routeName,
-      pageBuilder: (context, state) {
-        return CustomTransitionPage(
-          child: const ThirdSplashScreen(),
-          transitionDuration: const Duration(seconds: 1),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
-              child: child,
-            );
-          },
-        );
-      },
-    ),
-    GoRoute(
-      path: FourthSplashScreen.routeName,
+      // path: FourthSplashScreen.routeName,
+      path: "/",
       // builder: (context, state) => const FourthSplashScreen()
       pageBuilder: (context, state) {
         return CustomTransitionPage(
@@ -101,7 +64,6 @@ final router = GoRouter(
     ),
     GoRoute(
       path: SpeakingScreen.routeName,
-      
       builder: (context, state) => const SpeakingScreen(),
     ),
     GoRoute(
@@ -119,6 +81,5 @@ final router = GoRouter(
       // path: "/",
       builder: (context, state) => const GamesScreen(),
     ),
-    
   ],
 );

@@ -14,23 +14,44 @@ class FourthSplashScreen extends StatefulWidget {
   State<FourthSplashScreen> createState() => _FourthSplashScreenState();
 }
 
-class _FourthSplashScreenState extends State<FourthSplashScreen>
-    with TickerProviderStateMixin {
+class _FourthSplashScreenState extends State<FourthSplashScreen> {
+  late int currentIndex;
+  late List<String> imagePaths;
+
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(const Duration(milliseconds: 6000), () {
       context.go(SetupScreen.routeName);
     });
+    currentIndex = 0;
+    imagePaths = [
+      'assets/images/splash1.png',
+      'assets/images/splash2.png',
+      'assets/images/splash3.png',
+    ];
+    // Start switching images after a delay
+    Future.delayed(Duration(seconds: 2), switchImage);
     super.initState();
+  }
+
+  void switchImage() {
+    setState(() {
+      currentIndex = (currentIndex + 1) % imagePaths.length;
+    });
+
+    // Schedule the next image switch after a delay
+    Future.delayed(const Duration(seconds: 2), switchImage);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Container(
           width: deviceWidth(context) * 1,
           height: deviceHeight(context) * 1,
+          padding: EdgeInsets.only(top: 10),
           decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/splashbg.png'),
@@ -55,47 +76,52 @@ class _FourthSplashScreenState extends State<FourthSplashScreen>
                   ),
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.025),
-                    child: Image.asset("assets/images/voice.png"),
+                    child: FadeInLeft(
+                        duration: const Duration(seconds: 1),
+                        child: Image.asset("assets/images/voice.png")),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: deviceHeight(context) * 0.05),
                     child: Column(
                       children: [
-                        Row(
-                          children: [
-                            Stack(
-                              children: [
-                                Text(
-                                  'Speak',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 1
-                                      ..color = AppColor.redColor,
+                        FadeInUp(
+                          duration: const Duration(seconds: 2),
+                          child: Row(
+                            children: [
+                              Stack(
+                                children: [
+                                  Text(
+                                    'Speak',
+                                    style: TextStyle(
+                                      fontSize: 35,
+                                      foreground: Paint()
+                                        ..style = PaintingStyle.stroke
+                                        ..strokeWidth = 1
+                                        ..color = AppColor.redColor,
+                                    ),
                                   ),
-                                ),
-                                const Text(
-                                  'Speak',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColor.whiteColor,
+                                  const Text(
+                                    'Speak',
+                                    style: TextStyle(
+                                      fontSize: 35,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.whiteColor,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const Text(
-                              "Sphere",
-                              style: TextStyle(
-                                  color: AppColor.redColor,
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.w600),
-                            )
-                          ],
+                                ],
+                              ),
+                              const Text(
+                                "Sphere",
+                                style: TextStyle(
+                                    color: AppColor.redColor,
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
                         ),
-                        FadeIn(
-                          duration: const Duration(seconds: 1),
+                        FadeInRight(
+                          duration: const Duration(seconds: 2),
                           child: Stack(
                             children: [
                               Text(
@@ -129,14 +155,18 @@ class _FourthSplashScreenState extends State<FourthSplashScreen>
               //   height: deviceHeight(context) * 0.06,
               // ),
               FadeIn(
-                duration: const Duration(seconds: 1),
+                duration: const Duration(seconds: 2),
                 child: Container(
                   margin: const EdgeInsets.all(0.0),
                   padding: const EdgeInsets.only(bottom: 15.0),
-                  child: Image.asset(
-                    "assets/images/splash3.png",
-                    fit: BoxFit.contain,
-                    width: deviceWidth(context),
+                  child: AnimatedSwitcher(
+                    duration: const Duration(seconds: 1),
+                    child: Image.asset(
+                      imagePaths[currentIndex],
+                      key: ValueKey<int>(currentIndex),
+                      fit: BoxFit.contain,
+                      width: deviceWidth(context),
+                    ),
                   ),
                 ),
               ),
