@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:speaksphere/utils/routes_link.dart';
+import 'package:speaksphere/utils/routing.dart';
 import './utils/colors.dart';
 import './utils/routes.dart';
 
 void main() {
+  // CustomNavigationHelper.instance;
   runApp(const MyApp());
 }
 
@@ -17,9 +20,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           scaffoldBackgroundColor: AppColor.backgroundColor,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: AppColor.backgroundColor
-          ),
+          appBarTheme:
+              const AppBarTheme(backgroundColor: AppColor.backgroundColor),
           fontFamily: "Poppins",
           primaryColor: AppColor.primaryColor,
           textTheme: const TextTheme(
@@ -28,7 +30,8 @@ class MyApp extends StatelessWidget {
           )
           // useMaterial3: true,
           ),
-      routerConfig: router,
+      // routerConfig: CustomNavigationHelper.router,
+      routerConfig: AppNavigation.router,
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

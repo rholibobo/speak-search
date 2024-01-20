@@ -4,6 +4,8 @@ import 'package:speaksphere/screens/setup.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:speaksphere/utils/routes_link.dart';
+import 'package:speaksphere/utils/routing.dart';
 
 class FourthSplashScreen extends StatefulWidget {
   const FourthSplashScreen({super.key});
@@ -21,7 +23,7 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 6000), () {
-      context.go(SetupScreen.routeName);
+      context.push(AppNavigation.interestPath);
     });
     currentIndex = 0;
     imagePaths = [
@@ -35,14 +37,17 @@ class _FourthSplashScreenState extends State<FourthSplashScreen> {
   }
 
   void switchImage() {
-    setState(() {
-      currentIndex = (currentIndex + 1) % imagePaths.length;
-    });
+    if (mounted) {
+      setState(() {
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+      });
+    }
 
     // Schedule the next image switch after a delay
     Future.delayed(const Duration(seconds: 2), switchImage);
   }
 
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(

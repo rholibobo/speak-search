@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:speaksphere/screens/home.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
+import 'package:speaksphere/utils/routing.dart';
 import 'package:speaksphere/widgets/app_button.dart';
 import 'package:speaksphere/widgets/select_options.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -171,7 +172,7 @@ class _SetupScreenState extends State<SetupScreen> {
             Column(
               children: [
                 AppButton(() {
-                  context.push(HomeScreen.routeName);
+                  context.push(AppNavigation.homePath);
                 }, "Continue"),
                 const TextButton(
                   onPressed: null,

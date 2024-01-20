@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:speaksphere/widgets/app_button.dart';
@@ -14,13 +15,16 @@ class StreaksScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: deviceWidth(context) * 0.05),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-        
           children: [
-            SizedBox(height: deviceHeight(context) * 0.1,),
+            SizedBox(
+              height: deviceHeight(context) * 0.1,
+            ),
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(right: deviceWidth(context) * 0.1),
-              child: Image.asset("assets/images/voicegray.png",),
+              child: Image.asset(
+                "assets/images/voicegray.png",
+              ),
             ),
             const Text(
               "2",
@@ -179,10 +183,14 @@ class StreaksScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: deviceHeight(context) * 0.15,),
+            SizedBox(
+              height: deviceHeight(context) * 0.15,
+            ),
             Column(
               children: [
-                AppButton(() {}, "Continue"),
+                AppButton(() {
+                  context.pop();
+                }, "Continue"),
                 const TextButton(
                   onPressed: null,
                   child: Text(
