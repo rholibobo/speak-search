@@ -52,7 +52,7 @@ class _SelectOptionState extends State<SelectOption> {
                 'You can only select 6 options',
                 style: TextStyle(color: AppColor.whiteColor),
               ),
-              indicatorColor: Color.fromARGB(255, 255, 255, 255),
+              indicatorColor: const Color.fromARGB(255, 255, 255, 255),
             ),
           ),
         );

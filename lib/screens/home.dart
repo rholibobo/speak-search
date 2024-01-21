@@ -1,12 +1,15 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:speaksphere/screens/speaking.dart';
+import 'package:speaksphere/screens/streaks.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:speaksphere/utils/routing.dart';
 import 'package:speaksphere/widgets/home_items.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = "/home";
   const HomeScreen({super.key});
 
   static const List<dynamic> items = [
@@ -95,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.push(AppNavigation.streaksPath);
+                          context.push(StreaksScreen.routeName);
                         },
                         child: Image.asset(
                           "assets/images/fire.png",
@@ -115,9 +118,14 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         width: deviceWidth(context) * 0.1,
                       ),
-                      Image.asset(
-                        "assets/images/dart.png",
-                        width: deviceWidth(context) * 0.035,
+                      GestureDetector(
+                        onTap: () {
+                          context.push(SpeakingScreen.routeName);
+                        },
+                        child: Image.asset(
+                          "assets/images/dart.png",
+                          width: deviceWidth(context) * 0.035,
+                        ),
                       ),
                       SizedBox(
                         width: deviceWidth(context) * 0.01,
@@ -147,7 +155,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: FadeInUpBig(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 500),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -155,21 +163,21 @@ class HomeScreen extends StatelessWidget {
                   EdgeInsets.symmetric(horizontal: deviceWidth(context) * 0.03),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: deviceHeight(context) * 0.03,
-                  ),
-                  SizedBox(
-                    width: deviceWidth(context),
-                    height: deviceHeight(context),
-                    child: Column(
-                      children: [
-                        Row(
+                  // SizedBox(
+                  //   height: deviceHeight(context) * 0.03,
+                  // ),
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: deviceWidth(context),
+                        height: deviceHeight(context) * 0.15,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              // mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
                                   "Your",
@@ -199,31 +207,33 @@ class HomeScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: deviceHeight(context) * 0.03,
-                        ),
-                        Expanded(
-                          child: GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1.1,
-                              crossAxisSpacing: 20,
-                              mainAxisSpacing: 20,
-                            ),
-                            itemBuilder: (ctx, index) {
-                              return HomeGridItems(
-                                  items[index]["image"],
-                                  items[index]["title"],
-                                  items[index]["description"],
-                                  items[index]["progressValue"]);
-                            },
-                            itemCount: items.length,
+                      ),
+                      SizedBox(
+                        height: deviceHeight(context) * 0.03,
+                      ),
+                      SizedBox(
+                        width: deviceWidth(context),
+                        height: deviceHeight(context) * 0.6,
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1.1,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20,
                           ),
+                          itemBuilder: (ctx, index) {
+                            return HomeGridItems(
+                                items[index]["image"],
+                                items[index]["title"],
+                                items[index]["description"],
+                                items[index]["progressValue"]);
+                          },
+                          itemCount: items.length,
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

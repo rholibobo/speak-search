@@ -7,8 +7,8 @@ import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:speaksphere/utils/routing.dart';
 import 'package:speaksphere/widgets/app_button.dart';
+import 'package:speaksphere/widgets/bottom_navigation.dart';
 import 'package:speaksphere/widgets/select_options.dart';
-import 'package:dotted_border/dotted_border.dart';
 
 class SetupScreen extends StatefulWidget {
   static const routeName = "/setup";
@@ -172,7 +172,7 @@ class _SetupScreenState extends State<SetupScreen> {
             Column(
               children: [
                 AppButton(() {
-                  context.push(AppNavigation.homePath);
+                  context.push(BottomNavigationPage.routeName);
                 }, "Continue"),
                 const TextButton(
                   onPressed: null,

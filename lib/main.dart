@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:speaksphere/utils/routes.dart';
 import 'package:speaksphere/utils/routes_link.dart';
 import 'package:speaksphere/utils/routing.dart';
 import './utils/colors.dart';
-import './utils/routes.dart';
 
 void main() {
   // CustomNavigationHelper.instance;
@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           // useMaterial3: true,
           ),
       // routerConfig: CustomNavigationHelper.router,
-      routerConfig: AppNavigation.router,
+      // routerConfig: AppNavigation.router,
+      routerConfig: router,
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

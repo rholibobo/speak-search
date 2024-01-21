@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
@@ -42,6 +43,7 @@ class LessonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -112,66 +114,69 @@ class LessonScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: deviceWidth(context) * 0.04),
-          child: SizedBox(
-            width: deviceWidth(context),
-            height: deviceHeight(context),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: deviceHeight(context) * 0.05,
-                ),
-                Container(
-                  padding: EdgeInsets.all(deviceWidth(context) * 0.01),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1,
-                        color: AppColor.offWhite,
-                      ),
-                      borderRadius: BorderRadius.circular(50)),
-                  child: DefaultTabController(
-                    length: 2,
-                    child: TabBar(
-                        indicator: BoxDecoration(
-                            color: AppColor.primaryColor,
-                            borderRadius: BorderRadius.circular(30)),
-                        labelColor: AppColor.whiteColor,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        labelStyle: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                        unselectedLabelColor: AppColor.offWhite,
-                        tabs: const [
-                          Tab(
-                            child: Text("Audio Lesson"),
-                          ),
-                          Tab(
-                            child: Text("Video Lesson"),
-                          ),
-                        ]),
+      body: FadeInUpBig(
+        duration: const Duration(milliseconds: 500),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: deviceWidth(context) * 0.04),
+            child: SizedBox(
+              width: deviceWidth(context),
+              height: deviceHeight(context),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: deviceHeight(context) * 0.05,
                   ),
-                ),
-                SizedBox(
-                  height: deviceHeight(context) * 0.05,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => Padding(
-                      padding:
-                          EdgeInsets.only(bottom: deviceHeight(context) * 0.04),
-                      child: LessonItems(
-                        lessonItems[index]["image"],
-                        lessonItems[index]['title'],
-                        lessonItems[index]['description'],
-                        lessonItems[index]['color'],
-                      ),
+                  Container(
+                    padding: EdgeInsets.all(deviceWidth(context) * 0.01),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: AppColor.offWhite,
+                        ),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: DefaultTabController(
+                      length: 2,
+                      child: TabBar(
+                          indicator: BoxDecoration(
+                              color: AppColor.primaryColor,
+                              borderRadius: BorderRadius.circular(30)),
+                          labelColor: AppColor.whiteColor,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          labelStyle: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w500),
+                          unselectedLabelColor: AppColor.offWhite,
+                          tabs: const [
+                            Tab(
+                              child: Text("Audio Lesson"),
+                            ),
+                            Tab(
+                              child: Text("Video Lesson"),
+                            ),
+                          ]),
                     ),
-                    itemCount: lessonItems.length,
                   ),
-                )
-              ],
+                  SizedBox(
+                    height: deviceHeight(context) * 0.05,
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) => Padding(
+                        padding:
+                            EdgeInsets.only(bottom: deviceHeight(context) * 0.04),
+                        child: LessonItems(
+                          lessonItems[index]["image"],
+                          lessonItems[index]['title'],
+                          lessonItems[index]['description'],
+                          lessonItems[index]['color'],
+                        ),
+                      ),
+                      itemCount: lessonItems.length,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

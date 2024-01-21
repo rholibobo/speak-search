@@ -1,4 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 import 'package:speaksphere/widgets/app_button.dart';
@@ -60,7 +62,7 @@ class SpeakingScreen extends StatelessWidget {
                   SizedBox(
                     height: deviceHeight(context) * 0.15,
                   ),
-                  Image.asset("assets/images/speaker.png"),
+                  ZoomIn(child: Image.asset("assets/images/speaker.png")),
                 ],
               ),
             ),
@@ -82,7 +84,9 @@ class SpeakingScreen extends StatelessWidget {
             SizedBox(
               height: deviceHeight(context) * 0.04,
             ),
-             AppButton(() {}, "Continue"),
+            AppButton(() {
+              context.pop();
+            }, "Continue"),
           ],
         ),
       ),

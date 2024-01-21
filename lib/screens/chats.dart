@@ -31,7 +31,7 @@ class _ChatsScreenState extends State<ChatsScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     _controller.dispose();
     super.dispose();
   }
@@ -54,7 +54,7 @@ class _ChatsScreenState extends State<ChatsScreen>
           SizedBox(
             height: deviceHeight(context) * 0.03,
           ),
-          Container(
+          SizedBox(
             width: deviceWidth(context) * 0.8,
             height: deviceHeight(context) * 0.12,
             child: Stack(
@@ -87,7 +87,7 @@ class _ChatsScreenState extends State<ChatsScreen>
                     ],
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   left: -10,
                   bottom: 0,
                   child: Icon(
