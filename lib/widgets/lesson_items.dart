@@ -3,7 +3,8 @@ import 'package:speaksphere/utils/colors.dart';
 import 'package:speaksphere/utils/media_query.dart';
 
 class LessonItems extends StatelessWidget {
-  const LessonItems(this.image, this.title, this.description,this.color, {super.key});
+  const LessonItems(this.image, this.title, this.description, this.color,
+      {super.key});
   final String image;
   final String title;
   final String description;
@@ -26,7 +27,6 @@ class LessonItems extends StatelessWidget {
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
-                
               ),
             ),
             child: Column(
@@ -41,9 +41,9 @@ class LessonItems extends StatelessWidget {
                 ),
                 Text(
                   description,
-                  style: const TextStyle(color: AppColor.whiteColor, fontSize: 13),
+                  style:
+                      const TextStyle(color: AppColor.whiteColor, fontSize: 13),
                 ),
-                
               ],
             ),
           ),
